@@ -47,3 +47,16 @@ def test_format_from_account(input_account, output_account):
 def test_format_to_account(input_account, output_account):
     """ Проверка форматирования отображаемого счета начисления. """
     assert format_to_account(input_account) == output_account
+
+
+def test_get_sort_transactions():
+    assert len(get_sort_transactions('operations.json')) == 85
+    test_list = get_sort_transactions('operations.json')
+    test_list_data = []
+    for el in range(5):
+        test_list_data.append(test_list[el]['date'])
+    assert test_list_data == ['2019-12-08T22:46:21.935582',
+                              '2019-12-07T06:17:14.634890',
+                              '2019-11-19T09:22:25.899614',
+                              '2019-11-13T17:38:04.800051',
+                              '2019-11-05T12:04:13.781725']

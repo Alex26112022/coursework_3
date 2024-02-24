@@ -36,3 +36,13 @@ def format_from_account(write_off: str) -> str:
                    account_digit[4:6] + '**' + ' ' + '****' + ' ' +
                    account_digit[-4:])
         return account
+
+
+def format_to_account(write_to: str) -> str:
+    """ Принимает счет начисления и форматирует его -> <Счет **XXXX> """
+    account = write_to.split()
+    account_alpha = account[:-1]
+    account_digit = account[-1]
+    account_alpha = ' '.join(account_alpha)
+    account = account_alpha + ' ' + '**' + account_digit[-4:]
+    return account

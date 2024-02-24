@@ -37,3 +37,13 @@ def test_date_show(date_str, date_obj):
 def test_format_from_account(input_account, output_account):
     """ Проверка форматирования отображаемого счета списания. """
     assert format_from_account(input_account) == output_account
+
+
+@pytest.mark.parametrize('input_account, output_account',
+                         [('Счет 67667879435628279708', 'Счет **9708'),
+                          ('Maestro 7452400219469235', 'Maestro **9235'),
+                          ('Счет 60979028617970883410', 'Счет **3410'),
+                          ('Счет 15351391408911677994', 'Счет **7994')])
+def test_format_to_account(input_account, output_account):
+    """ Проверка форматирования отображаемого счета начисления. """
+    assert format_to_account(input_account) == output_account

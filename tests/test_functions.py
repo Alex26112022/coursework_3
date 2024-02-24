@@ -50,6 +50,7 @@ def test_format_to_account(input_account, output_account):
 
 
 def test_get_sort_transactions():
+    """ Проверка отсортированного релевантного списка транзакций. """
     assert len(get_sort_transactions('operations.json')) == 85
     test_list = get_sort_transactions('operations.json')
     test_list_data = []

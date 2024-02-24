@@ -46,3 +46,19 @@ def format_to_account(write_to: str) -> str:
     account_alpha = ' '.join(account_alpha)
     account = account_alpha + ' ' + '**' + account_digit[-4:]
     return account
+
+
+def get_sort_transactions(json_path) -> list:
+    """ Возвращает отсортированный по датам список успешных транзакций. """
+    all_information = load_json(json_path)
+
+    list_transactions = []
+    for el in all_information:
+        if bool(el) and el['state'] == 'EXECUTED':
+            list_transactions.append(el)
+
+    list_transactions.sort(
+        key=lambda transaction: date_format(transaction['date']),
+        reverse=True)
+
+    return list_transactions

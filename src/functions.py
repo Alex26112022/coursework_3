@@ -8,3 +8,9 @@ def load_json(json_file) -> list:
         file = f.read()
         file = json.loads(file)
     return file
+
+
+def date_format(date_str: str) -> datetime:
+    """ Принимает дату в строковом формате и возвращает в формате даты."""
+    date_obj = datetime.strptime(date_str, '%Y-%m-%dT%H:%M:%S.%f')
+    return date_obj

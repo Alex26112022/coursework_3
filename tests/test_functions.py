@@ -23,3 +23,17 @@ def test_date_format():
 def test_date_show(date_str, date_obj):
     """ Проверка форматирования отображаемой даты. """
     assert date_show(date_str) == date_obj
+
+
+@pytest.mark.parametrize('input_account, output_account',
+                         [('Счет 27248529432547658655',
+                           'Счет 2724 85** **** 8655'),
+                          ('Visa Platinum 2256483756542539',
+                           'Visa Platinum 2256 48** **** 2539'),
+                          ('MasterCard 4047671689373225',
+                           'MasterCard 4047 67** **** 3225'),
+                          ('Visa Gold 7305799447374042',
+                           'Visa Gold 7305 79** **** 4042')])
+def test_format_from_account(input_account, output_account):
+    """ Проверка форматирования отображаемого счета списания. """
+    assert format_from_account(input_account) == output_account

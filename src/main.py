@@ -34,4 +34,5 @@ def get_transaction(json_path):
     return info_str
 
 
-print(get_transaction('operations.json'))
+if __name__ == '__main__':
+    print(get_transaction('operations.json'))

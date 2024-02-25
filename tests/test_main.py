@@ -1,14 +1,15 @@
+from config import operations_path
 from src.main import *
 
 
 def test_five_transactions():
     """ Проверка количества возвращаемых транзакций. """
-    assert len(five_transactions('operations.json')) == 5
+    assert len(five_transactions(operations_path)) == 5
 
 
 def test_get_transaction():
     """ Тестирует итоговую функцию. """
-    assert get_transaction('operations.json') == (
+    assert get_transaction(operations_path) == (
         '08.12.2019 Открытие вклада\n'
         'Счет **5907\n'
         '41096.24 USD\n'

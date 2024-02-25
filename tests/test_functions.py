@@ -1,12 +1,13 @@
 import pytest
 from src.functions import *
 from datetime import datetime
+from config import *
 
 
 def test_load_json():
     """ Проверка соответствия типа загружаемых данных. """
-    assert type(load_json('operations.json')) == list
-    assert type(load_json('operations.json')[0]) == dict
+    assert type(load_json(operations_path)) == list
+    assert type(load_json(operations_path)[0]) == dict
 
 
 def test_date_format():
@@ -51,8 +52,8 @@ def test_format_to_account(input_account, output_account):
 
 def test_get_sort_transactions():
     """ Проверка отсортированного релевантного списка транзакций. """
-    assert len(get_sort_transactions('operations.json')) == 85
-    test_list = get_sort_transactions('operations.json')
+    assert len(get_sort_transactions(operations_path)) == 85
+    test_list = get_sort_transactions(operations_path)
     test_list_data = []
     for el in range(5):
         test_list_data.append(test_list[el]['date'])
